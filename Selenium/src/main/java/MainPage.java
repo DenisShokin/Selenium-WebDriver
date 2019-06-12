@@ -1,10 +1,12 @@
-import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class MainPage {
     WebDriver driver;
+    Actions action;
 
     public MainPage(WebDriver driver)
     {
@@ -13,7 +15,6 @@ public class MainPage {
 
     @FindBy(xpath = "//a[@href='/login']")
     private WebElement signInButton;
-
     @FindBy(xpath = "(//a[@href=\"/join?source=header-home\" and @data-ga-click])[2]")
     private WebElement signUpButton;
     @FindBy(xpath = "//input[@id='user[login]']")
@@ -24,6 +25,12 @@ public class MainPage {
     private WebElement passwordField;
     @FindBy(xpath = "//form[@class=\"home-hero-signup text-gray-dark js-signup-form\"]//button[text()='Sign up for GitHub']")
     private WebElement signUpForGithubButton;
+    @FindBy(xpath = "//summary[contains(text(),\"Why GitHub?\")]")
+    private WebElement whyGithubPad;
+    @FindBy(xpath = "//li[@class='edge-item-fix']//a[text()='Code review']")
+    private WebElement codeReviewItem;
+    @FindBy (xpath = "//input[@type='text' and @aria-label=\"Search GitHub\"]")
+    private WebElement searchInput;
 
     public LoginPage clickSignIn()
     {
@@ -68,6 +75,25 @@ public class MainPage {
         typePassword(password);
         clickSignUpForGithub();
         return new SignUpPage(driver);
+    }
+
+    public void navigateToWhyGitHubPad()
+    {
+        action = new Actions(driver);
+        action.moveToElement(whyGithubPad).build().perform();
+    }
+
+    public CodeReviewPage navigateToCodeReview()
+    {
+        navigateToWhyGitHubPad();
+        if (codeReviewItem.isDisplayed())
+        codeReviewItem.click();
+        return new CodeReviewPage(driver);
+    }
+
+    public void search(String searchString)
+    {
+        searchInput.sendKeys(searchString + Keys.ENTER);
     }
 
 

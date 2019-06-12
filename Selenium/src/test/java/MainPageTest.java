@@ -12,6 +12,7 @@ public class MainPageTest
 {
     private WebDriver driver;
     private MainPage mainPage;
+    private String searchStringOnPage = "Hello";
 
     @Before
     public void setUp()
@@ -46,6 +47,20 @@ public class MainPageTest
         SignUpPage signUpPage = mainPage.register("", "test@mail.ru", "testpassword1234567890");
         String error = signUpPage.getLoginErrorText();
         Assert.assertEquals("Check error with empty login", "Login can't be blank", error);
+    }
+
+    @Test
+    public void navigateToCodeReviewPage()
+    {
+        CodeReviewPage crp = mainPage.navigateToCodeReview();
+        String heading = crp.getHeadingText();
+        Assert.assertEquals( "Write better code", heading);
+    }
+
+    @Test
+    public void searchInformation()
+    {
+        mainPage.search(searchStringOnPage);
     }
 
     @After
