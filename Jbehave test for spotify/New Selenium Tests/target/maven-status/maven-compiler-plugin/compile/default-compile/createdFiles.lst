@@ -1,0 +1,3 @@
+testpackage/pages/SignUpPage.class
+testpackage/steps/serenity/SignUpSteps.class
+testpackage/steps/jbehave/SignUpPageSteps.class
