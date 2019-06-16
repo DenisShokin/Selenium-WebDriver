@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: CodeReviewPageTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 5.198 s <<< FAILURE! - in CodeReviewPageTest
+returnToAllFetures(CodeReviewPageTest)  Time elapsed: 5.197 s  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Unable to create new remote session. desired capabilities = Capabilities [{browserName=chrome, version=, platform=ANY}], required capabilities = Capabilities [{}]
+Build info: version: '3.0.1', revision: '1969d75', time: '2016-10-18 09:49:13 -0700'
+System info: host: 'MacBook-Air-Denis.local', ip: '127.0.0.1', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.4', java.version: '12.0.1'
+Driver info: driver.version: RemoteWebDriver
+	at CodeReviewPageTest.setUp(CodeReviewPageTest.java:26)
+
+returnToAllFetures(CodeReviewPageTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at CodeReviewPageTest.tearDown(CodeReviewPageTest.java:47)
+
